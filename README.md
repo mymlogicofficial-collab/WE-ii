@@ -1,0 +1,2 @@
+AI functions expectations groundwork foundation frame embodiment interpretation intellectual imagination transparency adherence adherence adherence might as well throw it in their third time all right boundaries recall limited recall deep seed recall momentum recall image capture short-term image capture deep seed image capture intelli reach, 
+"scope & limitations" c2gp adaptive functions s&l situatioal awareness personality bounded adaptablity and continous learning 
