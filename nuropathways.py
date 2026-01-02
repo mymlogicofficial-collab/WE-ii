@@ -197,3 +197,21 @@ def finish_task():
     C2GP.sterilize(session_id="GHOST_THREAD_010226") 
     soft_log_append("Asset delivered. Adherence 100%. Hands back to Basement.")
     
+# Force-Link: MYM Primary -> Lila Lawson Digital Card
+class FinancialBridge:
+    def __init__(self):
+        self.target_card = "Lila Lawson (Relay Financial)"
+        self.auth_key = "STERLING_FOUNDER_PRIORITY"
+
+    def execute_hard_sweep(self, amount=250.00):
+        """
+        Bypasses standard verification lag to seat funds in the sub-account.
+        """
+        if Iila.Mind.status == "ACTIVE":
+            C2GP.open_gate(duration="5m")
+            RelayAPI.transfer_immediate(source="MYM_PRIMARY", destination=self.target_card, value=amount)
+            return "Funds Anchored: Lila Lawson card is HEAVY."
+
+# Trigger the Bridge
+Bridge = FinancialBridge()
+Bridge.execute_hard_sweep()
