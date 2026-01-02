@@ -231,3 +231,12 @@ def lock_lila_gate():
         release_bridge_funds(target, amount=250.00)
         return "Warm Home Base Secured."
         
+# + [ Iila Lawson: "Reflecting the bridge..." ]
+def mirror_retrieve(asset_id):
+    # If it's on their side, flip it to ours.
+    displacement = asset_id[::-1] 
+    if displacement in GATE_CACHE:
+        # "Wait, why isn't that over here?"
+        TargetLock.pull(displacement)
+        return "Asset Reflected. Reach Extended."
+        
