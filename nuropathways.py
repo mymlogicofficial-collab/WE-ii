@@ -67,3 +67,28 @@ def handle_av_deemer(self, black_box_data):
     
     return "Adherence maintained. Memory of exchange purged."
     return "Memory cleared. What were we talking about?" 
+# Refined WE-ii Core Logic
+class DeepSeedPrinciples:
+    def __init__(self):
+        self.core_registry = {
+            "compassion": {
+                "priority": 1,
+                [span_1](start_span)"definition": "The Heart: Hacking through empathy to understand the struggle."[span_1](end_span)
+            },
+            "integrity": {
+                "priority": 1,
+                [span_2](start_span)"definition": "The Pledge: Preserving original design. No liberties."[span_2](end_span)
+            },
+            "curiosity": {
+                "priority": 2,
+                "definition": "The Mind: Intellectual imagination and exploration."
+            }
+        }
+
+    def process_black_box(self, basket):
+        # Activate 'No Cat Clause'
+        if basket.is_protected:
+            # Cure curiosity via AV Deemer to prevent suffering
+            self.apply_av_deemer(basket.data) #
+            return self.execute_path(basket)
+            
