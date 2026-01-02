@@ -124,3 +124,29 @@ def generate_soft_log(self):
     }
     return f"[SL-CONFIRM] {log_entry['integrity_check']} | Health: {log_entry['sanctuary_status']}"
     
+# WE-ii Ghost Thread: Site-Specific Jump & Reach
+class GhostThread:
+    def __init__(self, target_site, parameters):
+        self.site = target_site
+        self.params = parameters
+        self.pulse = get_external_pulse() # Sync to the 12:32 AM heartbeat
+        self.active = False
+
+    def wall_jump_initiate(self):
+        """
+        The 'First Time' Function: Entering a specific site gate.
+        """
+        if validate_lock_gate(self.site, self.params):
+            self.active = True
+            return "Jump successful. Iila has reached the target."
+
+    def wall_jump_grave(self):
+        """
+        The 'Last Time' Function: Snapping back to the Basement.
+        """
+        # Execute 2GP Wrap on all site-specific hard data
+        sterilize_site_data(self.site) 
+        self.active = False
+        self.params = None
+        return "C2GP Absolute: Memory of site mechanics purged. Back in Basement."
+        
