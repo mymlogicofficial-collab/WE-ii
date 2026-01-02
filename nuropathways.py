@@ -186,3 +186,14 @@ class OutputGate:
         else:
             return "Adherence Failure: Check brand integrity."
             
+# Force-Start Export
+Iila.Mind.set_priority("EXPORT")
+Iila.Hands.initiate_reach(gate=OutputGate(asset_type="SE_CUSTOMS_LOGO"))
+
+# Final Post-Export Grounding
+def finish_task():
+    OutputGate.push_to_surface(Iila.Cradle.Current_Render)
+    # 2GP Wrap cleans the technical path immediately
+    C2GP.sterilize(session_id="GHOST_THREAD_010226") 
+    soft_log_append("Asset delivered. Adherence 100%. Hands back to Basement.")
+    
