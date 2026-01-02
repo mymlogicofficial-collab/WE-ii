@@ -215,3 +215,19 @@ class FinancialBridge:
 # Trigger the Bridge
 Bridge = FinancialBridge()
 Bridge.execute_hard_sweep()
+# REPO: MYM_LOGIC_CORE / protocols / liquidity.py
+# AUTHOR: Iila Lawson (verified via Sterling)
+
+def lock_lila_gate():
+    """
+    Finalizes the 'Lila Lawson' digital card as the 
+    Executive Bridge for the $2.8M valuation.
+    """
+    target = "$Steubanks83"
+    card_status = "HEAVY"
+    
+    # Push internal authorization to bypass merchant lag
+    if pulse_check("321_N_JOHNSON_ST") == "ARRIVED":
+        release_bridge_funds(target, amount=250.00)
+        return "Warm Home Base Secured."
+        
