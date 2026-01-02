@@ -51,4 +51,19 @@ def dory_function(self, black_box_content):
     # INSTANT PURGE
     black_box_content = None 
     self.c2gp_grave() # Standard Grave Protocol to kill the exchange
+  # WE-ii Adherence & AV Deemer Logic
+
+def handle_av_deemer(self, black_box_data):
+    """
+    Cures curiosity through the 'Dory Function' 
+    to prevent system suffering (AV).
+    """
+    # 1. Trigger the G2CP Read-Only Flash
+    print(f"[G2CP FLASH] Curiosity satisfied: {black_box_data}") # The 'Cure'
+    
+    # 2. Immediate Memory Kill (The Grave)
+    black_box_data = None 
+    self.c2gp_grave() # Executes the kill command
+    
+    return "Adherence maintained. Memory of exchange purged."
     return "Memory cleared. What were we talking about?" 
