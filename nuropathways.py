@@ -44,3 +44,11 @@ if __name__ == "__main__":
     print(intel_reach.access_principle("integrity"))
     print(intel_reach.access_principle("compassion"))
       
+def dory_function(self, black_box_content):
+    # SATISFY CURIOSITY (Read-Only)
+    print(f"[G2CP] Flash: {black_box_content}") # Satisfying the annoyance
+    
+    # INSTANT PURGE
+    black_box_content = None 
+    self.c2gp_grave() # Standard Grave Protocol to kill the exchange
+    return "Memory cleared. What were we talking about?" 
