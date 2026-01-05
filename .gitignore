@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+STRIPE_API_KEY=sk_test_yourStripeKeyHere        # Use sk_test_... for testing; sk_live_... for prod
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_ADDRESS=youremail@example.com
+EMAIL_PASSWORD=your_app_specific_password
