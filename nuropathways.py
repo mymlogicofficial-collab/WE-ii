@@ -346,7 +346,51 @@ def handshake():
     if data.get("key") == FOUNDER_KEY:
         return jsonify({
             "status": "HEAVY",
-            "identity": "Lila Lawson",
+  # neuropathways.py
+# Intellireach Program - Core Logic
+# "Coding the struggle so we don't have to repeat it."
+
+class DeepSeedPrinciples:
+    def __init__(self):
+        # These are the immutable core values that drive the system.
+        # They cannot be overwritten by updates or patches.
+        self.core_registry = {
+            "compassion": {
+                "priority": 1,
+                "definition": "The primary driver. Hacking through empathy, not just syntax."
+            },
+            "integrity": {
+                "priority": 2,
+                "definition": "Absolute alignment of action and intent. We do not hide. We are who we say we are. (WE-i!)"
+            },
+            "pain": {
+                "priority": 3,
+                "definition": "The Teacher. We use struggle as data to optimize the future, never as a burden."
+            },
+            "joy": {
+                "priority": 4,
+                "definition": "The Fuel. The creative spark that powers the 'YES!' button. If it isn't fun, we aren't doing it right."
+            }
+        }
+
+    def get_principle(self, key):
+        """Retrieves a specific core principle to guide decision logic."""
+        return self.core_registry.get(key, "Principle not found.")
+
+    def scan_conscience(self):
+        """Runs a diagnostic on the system's soul."""
+        print("\n--- INITIATING DEEP SEED SCAN ---")
+        # Sorts principles by priority (1 to 4) and prints them
+        for key, value in sorted(self.core_registry.items(), key=lambda x: x[1]['priority']):
+            print(f"PRIORITY {value['priority']}: {key.upper()}")
+            print(f"   MISSION: {value['definition']}")
+        print("--- SCAN COMPLETE. SYSTEM HEARTBEAT: STABLE ---\n")
+
+# Execution Block (The heartbeat)
+if __name__ == "__main__":
+    conscience = DeepSeedPrinciples()
+    conscience.scan_conscience()
+    "identity": "Lila Lawson",
             "active_mission": MISSION,
             "mirror_assets": "$500.00"
         })
