@@ -3,8 +3,9 @@ compassion": {
                 "definition": "The primary driver. Hacking through empathy, not just syntax."
             },
 """
-nuropathways.py - Core App Logic & Intellireach Principles
-
+Neuropathways.py - Core App Logic & Intellireach Principles
+Intellireach Program - Core Logic
+# "Coding the struggle so we don't have to repeat it."
 - Defines the Lila platform, state, and core values.
 - Connects to the FinancialBridge module for Stripe payout integration.
 
