@@ -1,4 +1,7 @@
-
+compassion": {
+                "priority": 1,
+                "definition": "The primary driver. Hacking through empathy, not just syntax."
+            },
 """
 nuropathways.py - Core App Logic & Intellireach Principles
 
