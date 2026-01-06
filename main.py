@@ -1,15 +1,15 @@
 from fastapi import FastAPI, Request
-from nuropathways import #LilaMobile
+from nuropathways import MobileLila
 
 app = FastAPI()
 
-from nuropathways import Lila_Kinetic
+# Create the MobileLila instance
+lila = MobileLila()
 
 @app.post("/chat")
 async def chat(request: Request):
     data = await request.json()
-    user_message = data.get("message")
-    # Example: call a method on Lila_Kinetic (pick the right method)
-    ai_response = Lila_Kinetic.execute_stealth_relay()
+    # Optionally: use user message for future functions
+    # user_message = data.get("message")
+    ai_response = lila.execute_stealth_relay()
     return {"response": ai_response}
-uvicorn main:app --reload
