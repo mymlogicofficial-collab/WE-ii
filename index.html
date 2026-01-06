@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WE-ii x SE CUSTOMS Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {font-family: Arial, sans-serif; margin:0; background:#181821; color: #fafafc;}
+    header {background: #040D21; padding: 2em 1em;}
+    h1 {margin:0; font-size:2.5em;}
+    .logo {height:50px;}
+    nav a {color:#fff; margin-right:20px; text-decoration:none;}
+    .main {padding:2em 1em;}
+    .showcase {display:flex; flex-wrap:wrap; gap:2em;}
+    .project, .designer {background:#232337; border-radius:8px; padding:1em; flex:1 1 300px;}
+    .interact {margin-top:2em;}
+    button {background:#4776E6; color:#fff; border:none; border-radius:5px; padding:0.75em 1.5em; cursor:pointer;}
+    footer {text-align:center; padding:2em; background:#040D21; color:#888;}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://via.placeholder.com/140x50?text=WE-ii+Logo" class="logo" alt="WE-ii logo">
+    <h1>WE-ii x SE CUSTOMS</h1>
+    <nav>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <div class="main">
+    <section id="work" class="showcase">
+      <div class="project">
+        <h2>AI Integration</h2>
+        <p>Explore WE-ii's AI-powered code, FastAPI, and creative automation—see what we're building on GitHub.</p>
+        <a href="https://github.com/mymlogicofficial-collab/WE-ii" target="_blank">View Project Repo</a>
+      </div>
+      <div class="designer">
+        <h2>Designer: SE CUSTOMS</h2>
+        <img src="https://via.placeholder.com/240x120?text=Designer+Logo" alt="SE CUSTOMS logo" style="width:100%;margin-bottom:1em;border-radius:4px;">
+        <p>SE CUSTOMS crafts unique digital and physical designs. Check out our latest styles and creative branding!</p>
+        <a href="https://instagram.com/yourdesignerprofile" target="_blank">See Portfolio</a>
+      </div>
+    </section>
+    <section class="interact">
+      <h2>Say Hello!</h2>
+      <p>Click to see a custom message (sample interactivity):</p>
+      <button onclick="sayHi()">Click Me</button>
+      <div id="response" style="margin-top:1.5em; font-size:1.2em;"></div>
+      <script>
+        function sayHi() {
+          document.getElementById('response').innerText = "Welcome! We're excited to build and create together 🎉";
+        }
+      </script>
+    </section>
+    <section id="about">
+      <h2>About WE-ii & SE CUSTOMS</h2>
+      <p>We're a team fusing AI engineering with visionary design. This site showcases our collaborative journey from code to creation.</p>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:your@email.com" style="color:#4776E6;">your@email.com</a></p>
+    </section>
+  </div>
+  <footer>
+    WE-ii & SE CUSTOMS &copy; 2026
+  </footer>
+</body>
+</html>
