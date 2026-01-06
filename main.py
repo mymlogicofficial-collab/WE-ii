@@ -3,9 +3,12 @@ from nuropathways import your_ai_function  # Replace with your actual function/c
 
 app = FastAPI()
 
+from nuropathways import Lila_Kinetic
+
 @app.post("/chat")
 async def chat(request: Request):
     data = await request.json()
     user_message = data.get("message")
-    ai_response = your_ai_function(user_message)  # Update to fit your function
+    # Example: call a method on Lila_Kinetic (pick the right method)
+    ai_response = Lila_Kinetic.execute_stealth_relay()
     return {"response": ai_response}
