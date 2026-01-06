@@ -128,6 +128,12 @@ def get_account_info(connect_account_id):
     Returns:
         dict: Account information
     """
+    if not stripe.api_key:
+        return {
+            "status": "error",
+            "message": "Stripe is not configured. Please set STRIPE_API_KEY in your .env file."
+        }
+    
     try:
         account = stripe.Account.retrieve(connect_account_id)
         return {

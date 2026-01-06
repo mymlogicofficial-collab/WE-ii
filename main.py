@@ -82,6 +82,10 @@ async def chat(request: ChatRequest):
     """
     try:
         # Optional authentication check
+        # Note: Authentication is optional for basic chat functionality.
+        # If user_key is provided, it will be validated. If not provided,
+        # the chat works without authentication (public mode).
+        # To require authentication for all requests, remove the conditional check.
         if request.user_key and request.user_key != FOUNDER_KEY:
             raise HTTPException(status_code=403, detail="Access Denied")
         
