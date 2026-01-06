@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WE-ii Lila Platform - Chat Interface</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #181821 0%, #040D21 100%);
+      color: #fafafc;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #040D21;
+      padding: 1.5em;
+      border-bottom: 2px solid #4776E6;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #4776E6;
+    }
+
+    .auth-section {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .auth-input {
+      padding: 0.5em 1em;
+      border: 1px solid #4776E6;
+      border-radius: 5px;
+      background: #232337;
+      color: #fafafc;
+      font-size: 0.9em;
+    }
+
+    .auth-status {
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    .auth-status.authenticated {
+      background: #2ecc71;
+      color: white;
+    }
+
+    .auth-status.unauthenticated {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .chat-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      background: #1a1a2e;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .message {
+      margin-bottom: 20px;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message.user {
+      text-align: right;
+    }
+
+    .message.assistant {
+      text-align: left;
+    }
+
+    .message-bubble {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 18px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+
+    .message.user .message-bubble {
+      background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+      color: white;
+    }
+
+    .message.assistant .message-bubble {
+      background: #232337;
+      color: #fafafc;
+      border: 1px solid #4776E6;
+    }
+
+    .message-label {
+      font-size: 0.8em;
+      margin-bottom: 5px;
+      opacity: 0.7;
+    }
+
+    .chat-input-container {
+      display: flex;
+      gap: 10px;
+      padding: 15px;
+      background: #232337;
+      border-radius: 10px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+    }
+
+    #messageInput {
+      flex: 1;
+      padding: 12px 18px;
+      border: 2px solid #4776E6;
+      border-radius: 25px;
+      background: #1a1a2e;
+      color: #fafafc;
+      font-size: 1em;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    #messageInput:focus {
+      border-color: #8E54E9;
+    }
+
+    button {
+      background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(71, 118, 230, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      background: #555;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .typing-indicator {
+      display: none;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .typing-indicator.active {
+      display: block;
+    }
+
+    .typing-dots {
+      display: inline-block;
+    }
+
+    .typing-dots span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4776E6;
+      margin: 0 2px;
+      animation: typing 1.4s infinite;
+    }
+
+    .typing-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typing {
+      0%, 60%, 100% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-10px);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1em;
+      background: #040D21;
+      border-top: 1px solid #4776E6;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    .quick-actions {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .quick-action-btn {
+      padding: 8px 16px;
+      background: #232337;
+      border: 1px solid #4776E6;
+      border-radius: 15px;
+      color: #fafafc;
+      font-size: 0.85em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quick-action-btn:hover {
+      background: #4776E6;
+      transform: translateY(-1px);
+    }
+
+    .error-message {
+      background: #e74c3c;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      display: none;
+    }
+
+    .error-message.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>🤖 WE-ii Lila Platform</h1>
+      <div class="auth-section">
+        <input type="password" id="authKey" class="auth-input" placeholder="Founder Key" />
+        <button onclick="authenticate()">Authenticate</button>
+        <div id="authStatus" class="auth-status unauthenticated">Not Authenticated</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="chat-container">
+    <div id="errorMessage" class="error-message"></div>
+    
+    <div class="quick-actions">
+      <button class="quick-action-btn" onclick="sendQuickMessage('Hello')">👋 Hello</button>
+      <button class="quick-action-btn" onclick="sendQuickMessage('What is your status?')">📊 Status</button>
+      <button class="quick-action-btn" onclick="sendQuickMessage('Tell me about the principle of compassion')">❤️ Compassion</button>
+      <button class="quick-action-btn" onclick="sendQuickMessage('What is the secure heavy status?')">🔒 Security</button>
+    </div>
+
+    <div id="chatMessages" class="chat-messages">
+      <div class="message assistant">
+        <div class="message-label">Lila Assistant</div>
+        <div class="message-bubble">
+          Welcome to the WE-ii Lila Platform! I'm here to help you with the KIDS project and more. 
+          How can I assist you today?
+        </div>
+      </div>
+    </div>
+
+    <div class="typing-indicator" id="typingIndicator">
+      <div class="typing-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span style="margin-left: 10px;">Lila is thinking...</span>
+    </div>
+
+    <div class="chat-input-container">
+      <input 
+        type="text" 
+        id="messageInput" 
+        placeholder="Type your message here..." 
+        onkeypress="handleKeyPress(event)"
+      />
+      <button id="sendButton" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <footer>
+    WE-ii & SE CUSTOMS © 2026 | Powered by Lila Platform
+  </footer>
+
+  <script>
+    // API Base URL - configurable based on environment
+    // In production, update this to your deployed backend URL
+    const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:8000'
+      : `${window.location.protocol}//${window.location.hostname}:8000`;
+    
+    let isAuthenticated = false;
+    let userKey = null;
+
+    async function authenticate() {
+      const key = document.getElementById('authKey').value;
+      
+      if (!key) {
+        showError('Please enter a founder key');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/auth`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ key: key })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === 'HEAVY') {
+          isAuthenticated = true;
+          userKey = key;
+          document.getElementById('authStatus').textContent = 'Authenticated ✓';
+          document.getElementById('authStatus').className = 'auth-status authenticated';
+          document.getElementById('authKey').value = '';
+          addMessage('assistant', data.message);
+          hideError();
+        } else {
+          showError(data.message || 'Authentication failed');
+          isAuthenticated = false;
+          userKey = null;
+        }
+      } catch (error) {
+        showError('Authentication error: ' + error.message);
+        isAuthenticated = false;
+        userKey = null;
+      }
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const message = input.value.trim();
+
+      if (!message) return;
+
+      // Add user message to chat
+      addMessage('user', message);
+      input.value = '';
+
+      // Show typing indicator
+      showTypingIndicator();
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/chat`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            message: message,
+            user_key: userKey
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          addMessage('assistant', data.response);
+          hideError();
+        } else {
+          showError(data.detail || 'Error processing message');
+          addMessage('assistant', 'Sorry, there was an error processing your message.');
+        }
+      } catch (error) {
+        showError('Connection error: ' + error.message);
+        addMessage('assistant', 'Sorry, I couldn\'t connect to the server. Please make sure the backend is running.');
+      } finally {
+        hideTypingIndicator();
+      }
+    }
+
+    function sendQuickMessage(message) {
+      document.getElementById('messageInput').value = message;
+      sendMessage();
+    }
+
+    function addMessage(role, content) {
+      const messagesContainer = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${role}`;
+      
+      const label = role === 'user' ? 'You' : 'Lila Assistant';
+      
+      messageDiv.innerHTML = `
+        <div class="message-label">${label}</div>
+        <div class="message-bubble">${content}</div>
+      `;
+      
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+      document.getElementById('typingIndicator').classList.add('active');
+    }
+
+    function hideTypingIndicator() {
+      document.getElementById('typingIndicator').classList.remove('active');
+    }
+
+    function showError(message) {
+      const errorDiv = document.getElementById('errorMessage');
+      errorDiv.textContent = message;
+      errorDiv.classList.add('active');
+    }
+
+    function hideError() {
+      const errorDiv = document.getElementById('errorMessage');
+      errorDiv.classList.remove('active');
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    // Check server status on load
+    window.addEventListener('load', async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/`);
+        if (response.ok) {
+          console.log('Backend connected successfully');
+        }
+      } catch (error) {
+        showError('Warning: Backend server not running. Please start the server with: uvicorn main:app --reload');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,15 +1,9 @@
-compassion": {
-                "priority": 1,
-                "definition": "The primary driver. Hacking through empathy, not just syntax."
-            },
 """
-Neuropathways.py - Core App Logic & Intellireach Principles
+neuropathways.py - Core App Logic & Intellireach Principles
 Intellireach Program - Core Logic
-# "Coding the struggle so we don't have to repeat it."
+"Coding the struggle so we don't have to repeat it."
 - Defines the Lila platform, state, and core values.
 - Connects to the FinancialBridge module for Stripe payout integration.
-
-Move payment API and onboarding logic to stripe_bridge.py.
 """
 
 from stripe_bridge import payout_to_recipient, onboard_recipient
@@ -37,8 +31,22 @@ class DeepSeedPrinciples:
         }
     }
 
+    def __init__(self):
+        self.core_registry = self.CORE_REGISTRY
+        self.mission_statement = "We AI: bridging the gap between human intent and digital execution."
+
     def get_principle(self, key):
         return self.CORE_REGISTRY.get(key, "Principle not found.")
+
+    def access_principle(self, name):
+        """
+        Retrieves a principle to guide a current decision or action.
+        """
+        principle = self.CORE_REGISTRY.get(name.lower())
+        if principle:
+            return f"[{name.upper()}] ACTIVATE: {principle['definition']}"
+        else:
+            return f"Error: Principle '{name}' not found in Deep Seed."
 
     def scan_conscience(self):
         print("\n--- INITIATING DEEP SEED SCAN ---")
@@ -47,13 +55,12 @@ class DeepSeedPrinciples:
         print("--- SCAN COMPLETE. SYSTEM HEARTBEAT: STABLE ---\n")
 
 
-
 class LilaPlatform:
     """
     Core logic for Lila platform, partners with FinancialBridge for payouts and onboarding.
     """
 
-    def __init__(self, user_name, identity):
+    def __init__(self, user_name="Sterling", identity="Lila Lawson"):
         self.user = user_name
         self.identity = identity
         self.mission = "KIDS"
@@ -72,7 +79,6 @@ class LilaPlatform:
         return payout_to_recipient(account_id, int(amount_usd * 100))
 
 
-
 # ---- Command-line demo ----
 if __name__ == "__main__":
     # Scan core values
@@ -81,9 +87,5 @@ if __name__ == "__main__":
 
     # Example onboarding
     lila = LilaPlatform(user_name="Sterling", identity="Lila Lawson")
-    # result = lila.onboard_lila(email="lila@example.com")
-    # print(result)
-    # To make a payout (after onboarding) -- fill in real account_id & amount!
-    # payout_result = lila.payout_lila(account_id="acct_1HXXXXXXX", amount_usd=250.00)
-    # print(payout_result)
-  
+    print(f"\nLila Platform initialized for {lila.user} ({lila.identity})")
+    print(f"Mission: {lila.mission}")
