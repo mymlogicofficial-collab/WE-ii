@@ -3,20 +3,29 @@ main.py - FastAPI Backend for WE-ii Chat System
 Integrates with Lila platform for chat and authentication.
 """
 
+import os
 from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Optional
+from dotenv import load_dotenv
 from neuropathways import LilaPlatform, DeepSeedPrinciples
 from nuropathways import lilaplatform, MobileLila
 
+# Load environment variables
+load_dotenv()
+
 app = FastAPI(title="WE-ii Lila Platform API", version="1.0.0")
+
+# Get configuration from environment
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
+FOUNDER_KEY = os.getenv("FOUNDER_KEY", "83")
 
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify exact origins
+    allow_origins=ALLOWED_ORIGINS,  # Configure via ALLOWED_ORIGINS env variable
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -45,7 +54,7 @@ class AuthRequest(BaseModel):
 # Authentication helper
 def authenticate_user(auth_request: AuthRequest):
     """Simple authentication based on founder key."""
-    if auth_request.key == "83":
+    if auth_request.key == FOUNDER_KEY:
         return True
     raise HTTPException(status_code=403, detail="Access Denied. Invalid key.")
 
@@ -73,7 +82,7 @@ async def chat(request: ChatRequest):
     """
     try:
         # Optional authentication check
-        if request.user_key and request.user_key != "83":
+        if request.user_key and request.user_key != FOUNDER_KEY:
             raise HTTPException(status_code=403, detail="Access Denied")
         
         # Process the message
@@ -88,12 +97,12 @@ async def chat(request: ChatRequest):
             ai_response = lila_mobile.execute_stealth_relay()
         elif "principle" in user_message:
             # Extract principle name if mentioned
-            for principle in ["compassion", "integrity", "clarity", "resilience"]:
+            for principle in ["compassion", "integrity", "pain", "joy"]:
                 if principle in user_message:
                     ai_response = principles.access_principle(principle)
                     break
             else:
-                ai_response = "Available principles: compassion, integrity, clarity, resilience. Ask about any of them!"
+                ai_response = "Available principles: compassion, integrity, pain, joy. Ask about any of them!"
         else:
             ai_response = f"Message received: '{request.message}'. How can I assist with the KIDS project today?"
         

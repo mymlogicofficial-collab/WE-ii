@@ -11,7 +11,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configure Stripe API key
-stripe.api_key = os.getenv("STRIPE_API_KEY", "")
+stripe_key = os.getenv("STRIPE_API_KEY", "")
+if stripe_key:
+    stripe.api_key = stripe_key
+else:
+    # Stripe is optional - only required if using payment features
+    print("WARNING: STRIPE_API_KEY not set. Stripe features will not be available.")
+
+# Get configurable URLs from environment
+REFRESH_URL = os.getenv("STRIPE_REFRESH_URL", "http://localhost:8000/reauth")
+RETURN_URL = os.getenv("STRIPE_RETURN_URL", "http://localhost:8000/return")
 
 
 def onboard_recipient(email):
@@ -24,6 +33,12 @@ def onboard_recipient(email):
     Returns:
         dict: Contains account_id and onboarding_url
     """
+    if not stripe.api_key:
+        return {
+            "status": "error",
+            "message": "Stripe is not configured. Please set STRIPE_API_KEY in your .env file."
+        }
+    
     try:
         # Create Express account
         account = stripe.Account.create(
@@ -38,8 +53,8 @@ def onboard_recipient(email):
         # Generate onboarding link
         account_link = stripe.AccountLink.create(
             account=account.id,
-            refresh_url="http://localhost:8000/reauth",
-            return_url="http://localhost:8000/return",
+            refresh_url=REFRESH_URL,
+            return_url=RETURN_URL,
             type="account_onboarding",
         )
         
@@ -72,6 +87,12 @@ def payout_to_recipient(connect_account_id, amount_cents):
     Returns:
         dict: Payout result with status and payout_id
     """
+    if not stripe.api_key:
+        return {
+            "status": "error",
+            "message": "Stripe is not configured. Please set STRIPE_API_KEY in your .env file."
+        }
+    
     try:
         payout = stripe.Payout.create(
             amount=amount_cents,
