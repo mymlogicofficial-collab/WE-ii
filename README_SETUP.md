@@ -152,7 +152,15 @@ The chat interface responds to various keywords:
 - **"status"** - Get system status
 - **"secure"** or **"heavy"** - Security status
 - **"principle"** + principle name - Get specific principle info
-  - Available principles: compassion, integrity, clarity, resilience
+  - Available principles: compassion, integrity, pain, joy
+
+## Security Features
+
+- **Environment-based configuration** - All sensitive data stored in `.env` file
+- **CORS configuration** - Configurable allowed origins for API access
+- **Authentication** - Founder key-based authentication
+- **No hardcoded secrets** - All keys and URLs use environment variables
+- **Stripe optional** - Payment features gracefully disabled if not configured
 
 ## Stripe Integration (Optional)
 
