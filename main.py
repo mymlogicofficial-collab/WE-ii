@@ -12,3 +12,4 @@ async def chat(request: Request):
     # Example: call a method on Lila_Kinetic (pick the right method)
     ai_response = Lila_Kinetic.execute_stealth_relay()
     return {"response": ai_response}
+uvicorn main:app --reload
