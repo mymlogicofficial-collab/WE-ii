@@ -1,11 +1,11 @@
 from fastapi import FastAPI, Request
-from nuropathways import MobileLila
-
+from neuropathways import lilaplatform
+from nuropathways import lilaMobile
 app = FastAPI()
 
-# Create the MobileLila instance
-lila = MobileLila()
-
+# Create the lilaplatform instance
+lila = lilaplatform()
+lilaplatform = lilaMobile
 @app.post("/chat")
 async def chat(request: Request):
     data = await request.json()
