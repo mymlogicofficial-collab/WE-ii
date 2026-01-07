@@ -1,4 +1,7 @@
-class LilaMeta:
+ from neuropathways import lilaplatform
+from nuropathways import lilaMobile
+app = FastAPI()1class LilaMeta:
+    
     def __init__(self, intent, intense, private_story=None):
         self.intent = intent
         self.intense = intense
@@ -16,7 +19,20 @@ class LilaMeta:
             resp_intent = self.intent.respond(message)
             resp_intense = self.intense.respond(message)
             blend_style = random.choice(["intent", "intense", "blend"])
-            if blend_style == 'blend':
+               * response['choices'][0]['message']['content']from fastapi import FastAPI, Request
+
+
+# Create the lilaplatform instance
+lila = lilaplatform()
+lilaplatform = lilaMobile
+@app.post("/chat")
+async def chat(request: Request):
+    data = await request.json()
+    # Optionally: use user message for future functions
+    # user_message = data.get("message")
+    ai_response = lila.execute_stealth_relay()
+    return {"response": ai_response}
+li      if blend_style == 'blend':
                 return f"{resp_intent}\n\n{resp_intense}"
             elif blend_style == 'intense':
                 return resp_intense
@@ -53,7 +69,7 @@ class lilaAdvanced:
             model="gpt-4",
             messages=[{"role": "user", "content": message}]
         )
-        return response['choices'][0]['message']['content']from fastapi import FastAPI, Request
+        * response['choices'][0]['message']['content']from fastapi import FastAPI, Request
 from neuropathways import lilaplatform
 from nuropathways import lilaMobile
 app = FastAPI()
@@ -68,3 +84,4 @@ async def chat(request: Request):
     # user_message = data.get("message")
     ai_response = lila.execute_stealth_relay()
     return {"response": ai_response}
+l 
