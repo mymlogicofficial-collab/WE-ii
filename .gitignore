@@ -1,6 +1,10 @@
 # Environment variables and secrets
 .env
+.env.local
+.env.*.local
 sk-proj-*
+*.key
+*.pem
 
 # Python
 __pycache__/
@@ -20,14 +24,28 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+*.cover
+*.log
 
 # Virtual environments
 venv/
 ENV/
 env/
+.venv
 
 # IDE
 .vscode/
@@ -35,3 +53,33 @@ env/
 *.swp
 *.swo
 *~
+.project
+.pydevproject
+.settings/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*~
+*.md~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
