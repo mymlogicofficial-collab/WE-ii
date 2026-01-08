@@ -8,7 +8,7 @@ app = FastAPI()
 lilaIntent = lilaMobile()
 lilaIntense = lilaplatform()
 
-def load_private_story(path="private.md"):
+def load_private_story(path="Private.md<{--for WE-ii ONLY--}=>{[83]}"):
     try:
         with open(path, "r", encoding="utf-8") as f:
             return f.read().strip()
