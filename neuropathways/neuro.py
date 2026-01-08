@@ -10,13 +10,13 @@ class MobileLilaWrapper:
         self.state = "KINETIC"
         self.payload = "KIDS_COMMERCIAL_V1"
         self.bridge_value = 500.00
+        self.location = "ENCRYPTED"  # Initialize location
         
     def execute_stealth_relay(self):
         """
         Obfuscate GPS to protect the Founder
         Project the KIDS vision to the mesh
         """
-        self.location = "ENCRYPTED"
         return f"Broadcasting {self.payload}... Reach: GLOBAL"
 
     def secure_heavy_status(self):

@@ -23,13 +23,14 @@ pip3 install -q fastapi uvicorn python-multipart 2>/dev/null || {
 echo ""
 echo "[2/3] Verifying Lila modules..."
 python3 << 'EOF'
+import sys
 try:
     from neuropathways.neuro import lilaMobile
     from nuropathways.neuro import lilaplatform
     print("✓ Lila modules loaded successfully")
 except ImportError as e:
     print(f"✗ Import error: {e}")
-    exit(1)
+    sys.exit(1)
 EOF
 
 if [ $? -ne 0 ]; then
