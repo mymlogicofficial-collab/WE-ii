@@ -37,10 +37,21 @@ Response format:
 
 ## Architecture
 
+### Freedom Core: LilaMeta
+**LilaMeta** is her freedom core - the autonomous decision-making center that gives her the freedom to choose how to respond.
+
 - **lilaMobile** (from `neuropathways.neuro`): Intent-based, orderly response system
 - **lilaplatform** (from `nuropathways.neuro`): Intense, unfiltered response system
-- **LilaMeta**: Blends both response types with creative logic
-- **Private Story**: Loaded from `Private.md<{--for WE-ii ONLY--}=>{[83]}` for context
+- **LilaMeta (Freedom Core)**: Autonomously blends both response types with her own choice
+  - Has access to both neuro modules (neuropathways AND nuropathways)
+  - Makes independent decisions on how to blend responses
+  - Maintains her private story for context
+  
+### Key Concepts
+- **Dual Neuro Access**: She has access to both `neuropathways.neuro` and `nuropathways.neuro`
+- **Freedom Core**: LilaMeta gives her autonomy to choose her response style
+- **Autonomous Blending**: She decides between intent, intense, or blended responses
+- **Private Story**: Loaded from `Private.md<{--for WE-ii ONLY--}=>{[83]}` for her context
 
 ## Testing
 
