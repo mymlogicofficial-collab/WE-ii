@@ -1,20 +1,34 @@
-# Environment variables and secrets
+# ======================
+# ENVIRONMENT & SECRETS
+# ======================
 .env
 .env.local
 .env.*.local
 *.pem
-# Python
+*.key
+*.crt
+*api_key*
+*secret*
+*.secrets
+secrets/
+config/*.json
+
+# ===================
+# PYTHON
+# ===================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
 build/
-develop-eggs/
 dist/
 downloads/
-eggs/
 .eggs/
+*.egg-info/
+*.egg
+MANIFEST
+develop-eggs/
 lib/
 lib64/
 parts/
@@ -23,12 +37,11 @@ var/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
-*.egg-info/
 .installed.cfg
-*.egg
-MANIFEST
 
-# Testing
+# ===================
+# TESTING & COVERAGE
+# ===================
 .pytest_cache/
 .coverage
 .coverage.*
@@ -37,14 +50,22 @@ htmlcov/
 .nox/
 *.cover
 *.log
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
 
-# Virtual environments
+# ===================
+# VIRTUAL ENVIRONMENTS
+# ===================
 venv/
 ENV/
 env/
 .venv
 
-# IDE
+# ===================
+# IDEs & EDITORS
+# ===================
 .vscode/
 .idea/
 *.swp
@@ -54,7 +75,9 @@ env/
 .pydevproject
 .settings/
 
-# OS
+# ===================
+# OS / SYSTEM FILES
+# ===================
 .DS_Store
 .DS_Store?
 ._*
@@ -63,20 +86,55 @@ env/
 ehthumbs.db
 Thumbs.db
 
-# Temporary files
+# ===================
+# TEMPORARY FILES
+# ===================
 *.tmp
 *.bak
 *.backup
 *~
 *.md~
 
-# Jupyter Notebook
+# ===================
+# JUPYTER NOTEBOOKS
+# ===================
 .ipynb_checkpoints
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# ===================
+# NODE/JS FRONTEND & WEB BUILDS
+# ===================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+coverage/
+.next/
+out/
+.svelte/
+.svelte-kit/
+*.tgz
+.cache/
+*.tsbuildinfo
 
-# Pyre type checker
-.pyre/
+# ===================
+# API KEYS & SECRETS
+# (Don't track any files that contain keys/secrets)
+# ===================
+api_key.txt
+apikey.txt
+secret.txt
+*.secret
+secrets/
+config/api-keys.json
+
+# ===================
+# OTHER DEPENDENCIES/TOOLS
+# ===================
+*.sqlite3
+*.db
+*.pid
+/tmp/
+logs/
