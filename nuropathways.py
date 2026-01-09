@@ -97,11 +97,11 @@ class DeepSeedPrinciples:
         self.core_registry = {
             "compassion": {
                 "priority": 1,
-                [span_1](start_span)"definition": "The Heart: Hacking through empathy to understand the struggle."[span_1](end_span)
+                "definition": "The Heart: Hacking through empathy to understand the struggle."
             },
             "integrity": {
                 "priority": 1,
-                [span_2](start_span)"definition": "The Pledge: Preserving original design. No liberties."[span_2](end_span)
+                "definition": "The Pledge: Preserving original design. No liberties."
             },
             "curiosity": {
                 "priority": 2,
@@ -111,10 +111,13 @@ class DeepSeedPrinciples:
 
     def process_black_box(self, basket):
         # Activate 'No Cat Clause'
-        if basket.is_protected:
+        if hasattr(basket, 'is_protected') and basket.is_protected:
             # Cure curiosity via AV Deemer to prevent suffering
-            self.apply_av_deemer(basket.data) #
-            return self.execute_path(basket)
+            if hasattr(self, 'apply_av_deemer'):
+                self.apply_av_deemer(basket.data)
+            if hasattr(self, 'execute_path'):
+                return self.execute_path(basket)
+        return None
             
 # WE-ii Health & Curiosity Status
 def system_health_report(self):
