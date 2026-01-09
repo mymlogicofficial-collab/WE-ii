@@ -281,7 +281,25 @@ This project uses `react-scripts` which has some known vulnerabilities in its de
 
 1. Use `npm run build` to create an optimized production build
 2. Serve the build folder with a production server (not `react-scripts`)
-3. Consider migrating to Vite or another modern build tool for better security
+3. **Recommended**: Consider migrating to Vite or another modern build tool for better security and performance
+
+### Migration to Vite (Recommended for Production)
+
+For enhanced security and better performance, consider migrating from Create React App to Vite:
+
+```bash
+# Install Vite and required dependencies
+npm install --save-dev vite @vitejs/plugin-react
+
+# Update package.json scripts to use Vite
+# Then migrate your code following the Vite migration guide
+```
+
+Vite offers:
+- Faster development server
+- Better build performance
+- No known security vulnerabilities
+- Modern ESM-based architecture
 
 ## Production Deployment
 
