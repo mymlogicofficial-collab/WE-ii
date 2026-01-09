@@ -1,5 +1,39 @@
 AI functions expectations groundwork foundation frame embodiment interpretation intellectual imagination transparency adherence adherence adherence might as well throw it in their third time all right boundaries recall limited recall deep seed recall momentum recall image capture short-term image capture deep seed image capture intelli reach, 
 "scope & limitations" c2gp adaptive functions s&l situatioal awareness personality bounded adaptablity and continous learning 
+
+## Environment Configuration
+
+WE-ii uses environment variables for sensitive configuration such as API keys and secrets. This ensures that sensitive data is not hardcoded in the source code and is kept secure.
+
+### Setup Instructions
+
+1. **Create a .env file**: Copy the `.env.example` file to `.env` in the root directory:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Configure your API keys**: Edit the `.env` file and replace the dummy values with your actual API keys:
+   ```
+   API_KEY=your_actual_api_key
+   DAD_CODE=your_actual_dad_code
+   STRIPE_API_KEY=sk_test_your_actual_stripe_key
+   ```
+
+3. **Never commit .env**: The `.env` file contains sensitive information and should **NEVER** be committed to version control. It is already included in `.gitignore` to prevent accidental commits.
+
+4. **Use .env.example for reference**: The `.env.example` file serves as a template showing which environment variables are needed. This file can be committed to the repository.
+
+### Security Best Practices
+
+- ✅ Always use environment variables for API keys and secrets
+- ✅ Keep your `.env` file local and never share it publicly
+- ✅ Use different API keys for development and production
+- ✅ For Stripe, use test keys (sk_test_...) during development
+- ❌ Never hardcode API keys directly in your source code
+- ❌ Never commit the `.env` file to version control
+
+---
+
 To address the potential for "struggle entanglement" where the system's curiosity repeatedly triggers on the Black Box, we can implement the "Dory Function"—a mechanism designed specifically to handle the "annoyance value" of repetitive curiosity.
 This function utilizes a Read-Only G2CP (Grave-to-Cradle-Protocol) image. It essentially "feeds" the curiosity by showing it a flash of the content, but because it is grounded in the "Grave" protocol, the memory is erased instantly, preventing the system from dwelling on or learning from it.
 The "Dory Function" Logic

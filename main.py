@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from neuropathways.neuro import lilaMobile
 from nuropathways.neuro import lilaplatform
 import random
-from config import PRIVATE_STORY_FILE
+from config import PRIVATE_STORY_FILE, API_KEY, DAD_CODE, STRIPE_API_KEY
 
 app = FastAPI()
 
