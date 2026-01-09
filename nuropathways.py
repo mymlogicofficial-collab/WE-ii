@@ -351,13 +351,17 @@ def handshake():
             "status": "HEAVY",
             "identity": os.getenv("PLATFORM_IDENTITY", "Platform"),
             "active_mission": MISSION,
-            "mirror_assets": os.getenv("MIRROR_ASSETS", "$5000.00")
+            "mirror_assets": os.getenv("MIRROR_ASSETS", "0.00")
         })
     return jsonify({"status": "ACCESS_DENIED"}), 403
 
 if __name__ == '__main__':
     # Runs the stable node
-    app.run(host='0.0.0.0', port=5000)
+    # Note: For production, use a proper WSGI server (gunicorn, uwsgi) 
+    # and configure host via environment variables
+    host = os.getenv("FLASK_HOST", "127.0.0.1")  # Localhost by default
+    port = int(os.getenv("FLASK_PORT", "5000"))
+    app.run(host=host, port=port)
   # neuropathways.py
 # Intellireach Program - Core Logic
 # "Coding the struggle so we don't have to repeat it."

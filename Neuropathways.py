@@ -3,13 +3,10 @@ Neuropathways.py - Core App Logic & Intellireach Principles
 Intellireach Program - Core Logic
 # "Coding the struggle so we don't have to repeat it."
 - Defines the Lila platform, state, and core values.
-- Connects to the FinancialBridge module for Stripe payout integration.
 
-Move payment API and onboarding logic to stripe_bridge.py.
+Note: Payment integration functionality (stripe_bridge) should be implemented 
+separately with proper Stripe SDK integration when needed.
 """
-
-# Note: stripe_bridge.py module would contain the actual payout/onboarding implementation
-# For production use, implement stripe_bridge with proper environment variables
 
 
 class DeepSeedPrinciples:
@@ -58,19 +55,21 @@ class LilaPlatform:
     def onboard_user(self, email):
         """
         Onboards a user as a payout recipient.
-        Implementation should be in a separate payment integration module.
+        
+        To implement: Install stripe SDK and use environment variables for API key.
+        Example implementation would use Stripe Connect Express accounts.
         """
-        # TODO: Implement with proper payment service integration
-        # return onboard_recipient(email)
+        # Placeholder - implement with actual payment service
         return {"status": "pending", "email": email}
 
     def payout_user(self, account_id, amount_usd):
         """
         Payout to user account.
-        Implementation should be in a separate payment integration module.
+        
+        To implement: Install stripe SDK and use environment variables for API key.
+        Example implementation would use Stripe Payouts API.
         """
-        # TODO: Implement with proper payment service integration
-        # return payout_to_recipient(account_id, int(amount_usd * 100))
+        # Placeholder - implement with actual payment service
         return {"status": "pending", "account_id": account_id, "amount": amount_usd}
 
 
