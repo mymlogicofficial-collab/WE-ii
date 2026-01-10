@@ -1,6 +1,7 @@
 """
 neuropathways.neuro - lilaMobile class for mobile broadcast mode
 """
+import random
 
 
 class lilaMobile:
@@ -98,7 +99,6 @@ class lilaMobile:
         
         # Check for specific patterns
         if any(word in message_lower for word in ['hola', 'hello', 'hi', 'buenos', 'good morning', 'saludos']):
-            import random
             return random.choice(responses["greetings"])
         
         if any(word in message_lower for word in ['cómo estás', 'how are you', 'como estas']):
@@ -111,7 +111,4 @@ class lilaMobile:
             return responses["questions"]["who_are_you"]
         
         # Default response in detected language
-        if lang == 'es':
-            return responses["default"].format(message=message)
-        else:
-            return responses["default"].format(message=message)
+        return responses["default"].format(message=message)

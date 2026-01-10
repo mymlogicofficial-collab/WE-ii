@@ -1,6 +1,7 @@
 """
 nuropathways.neuro - lilaplatform class for intensive/unfiltered mode
 """
+import random
 
 
 class lilaplatform:
@@ -98,7 +99,6 @@ class lilaplatform:
         
         # Check for specific patterns
         if any(word in message_lower for word in ['hola', 'hello', 'hi', 'buenos', 'good morning', 'oye', 'hey', 'ey']):
-            import random
             return random.choice(responses["greetings"])
         
         if any(word in message_lower for word in ['cómo estás', 'how are you', 'como estas', 'qué tal']):
@@ -111,7 +111,4 @@ class lilaplatform:
             return responses["questions"]["who_are_you"]
         
         # Default response in detected language
-        if lang == 'es':
-            return responses["default"].format(message=message)
-        else:
-            return responses["default"].format(message=message)
+        return responses["default"].format(message=message)
