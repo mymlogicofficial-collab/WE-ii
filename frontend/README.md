@@ -224,17 +224,28 @@ async def chat(request: Request, token_payload: dict = Security(verify_token)):
 
 #### 3. Configure CORS
 
-Add CORS middleware to allow frontend requests:
+The backend now has CORS configured. For production deployments, you can set the `CORS_ORIGINS` environment variable:
+
+```bash
+# Development (default)
+CORS_ORIGINS=http://localhost:3000
+
+# Production (multiple origins)
+CORS_ORIGINS=https://your-frontend.com,https://www.your-frontend.com
+```
+
+The CORS configuration in `main.py`:
 
 ```python
 from fastapi.middleware.cors import CORSMiddleware
+from config import CORS_ORIGINS
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Frontend URL
+    allow_origins=CORS_ORIGINS,  # Configured via environment variable
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 ```
 
