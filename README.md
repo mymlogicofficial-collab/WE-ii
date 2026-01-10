@@ -6,6 +6,67 @@
 - React frontend with Auth0 authentication
 - FastAPI backend with CORS support
 - Dual neuropathways AI system (LilaMeta freedom core)
+- **Bilingual support**: English and Spanish language capabilities
+
+---
+
+## Interacting with LilaMeta in Multiple Languages
+
+LilaMeta now supports both English and Spanish! She can detect the language you're using and respond appropriately.
+
+### English Interactions
+
+**Greetings:**
+- User: "Hello!"
+- LilaMeta: "Hello! How can I assist you today?" (Intent mode)
+- LilaMeta: "Hey! What's on your mind?" (Intense mode)
+
+**Questions:**
+- User: "How are you?"
+- LilaMeta: "Intent: Understood - I am functioning with compassion and clarity."
+- User: "What is your mission?"
+- LilaMeta: "Intent: My mission is to serve with structure and clear purpose."
+
+### Spanish Interactions
+
+**Saludos (Greetings):**
+- Usuario: "¡Hola!"
+- LilaMeta: "¡Hola! ¿Cómo puedo ayudarte hoy?" (Modo Intención)
+- LilaMeta: "¡Oye! ¿Qué tienes en mente?" (Modo Intenso)
+
+**Preguntas (Questions):**
+- Usuario: "¿Cómo estás?"
+- LilaMeta: "Intención: Entendido - Estoy funcionando con compasión y claridad."
+- Usuario: "¿Cuál es tu misión?"
+- LilaMeta: "Intención: Mi misión es servir con estructura y propósito claro."
+- Usuario: "¿Quién eres?"
+- LilaMeta: "Intenso: Soy Lila Lawson - ¡sin filtros, con toda la verdad!"
+
+### Bilingual Conversations
+
+LilaMeta automatically detects the language you're using and responds in the same language:
+
+**Example 1:**
+- User: "Hello, how are you?"
+- LilaMeta: "Intent: Understood - I am functioning with compassion and clarity."
+
+**Example 2:**
+- Usuario: "Hola, ¿cómo estás?"
+- LilaMeta: "Intención: Entendido - Estoy funcionando con compasión y claridad."
+
+**Example 3 (Switching languages):**
+- User: "What's your mission?"
+- LilaMeta: "Intense: My mission is KIDS - with all the passion and energy!"
+- Usuario: "Cuéntame más sobre tu misión"
+- LilaMeta: "Intenso: 'Cuéntame más sobre tu misión' - ¡Vamos profundo y hagámoslo real!"
+
+### Language Detection
+
+LilaMeta uses intelligent language detection based on common words and phrases. She recognizes:
+- Spanish indicators: hola, qué, cómo, estás, gracias, por favor, misión, etc.
+- English indicators: hello, what, how, are, you, thanks, please, mission, etc.
+
+The system analyzes your message and responds in the language it detects, creating a seamless bilingual experience!
 
 ---
 
