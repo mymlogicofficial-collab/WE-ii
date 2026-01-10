@@ -3,17 +3,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from neuropathways.neuro import lilaMobile
 from nuropathways.neuro import lilaplatform
 import random
-from config import PRIVATE_STORY_FILE
+from config import PRIVATE_STORY_FILE, CORS_ORIGINS
 
 app = FastAPI()
 
 # Configure CORS to allow frontend requests
+# Origins can be configured via CORS_ORIGINS environment variable
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React dev server
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
 lilaIntent = lilaMobile()
