@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2026 WE-ii Project
+# Copyright 2024 WE-ii Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -41,8 +41,8 @@ for REGION in "${IM_SUPPORTED_REGIONS[@]}"; do
     fi
 done
 if [ -z "$DEPLOYMENT_NAME" ]; then
-	echo "Failed to find the existing deployment, exiting now!"
-	exit 1
+    echo "Failed to find the existing deployment, exiting now!"
+    exit 1
 fi
 echo "Region is ${REGION}"
 echo "Deployment name is ${DEPLOYMENT_NAME}"
@@ -95,4 +95,9 @@ else
 fi
 
 echo "Deploying the solution"
-gcloud infra-manager deployments apply projects/"${PROJECT_ID}"/locations/"${REGION}"/deployments/"${DEPLOYMENT_NAME}" --service-account "${SERVICE_ACCOUNT}" --local-source="." --inputs-file=./input.tfvars --labels="modification-reason=make-it-mine,goog-solutions-console-deployment-name=${DEPLOYMENT_NAME},goog-solutions-console-solution-id=${SOLUTION_ID},goog-config-partner=sc"
+gcloud infra-manager deployments apply \
+    projects/"${PROJECT_ID}"/locations/"${REGION}"/deployments/"${DEPLOYMENT_NAME}" \
+    --service-account "${SERVICE_ACCOUNT}" \
+    --local-source="." \
+    --inputs-file=./input.tfvars \
+    --labels="modification-reason=make-it-mine,goog-solutions-console-deployment-name=${DEPLOYMENT_NAME},goog-solutions-console-solution-id=${SOLUTION_ID},goog-config-partner=sc"

@@ -200,6 +200,6 @@ For issues or questions:
 
 ## License
 
-Copyright 2026 WE-ii Project
+Copyright 2024 WE-ii Project
 
 Licensed under the Apache License, Version 2.0
