@@ -1,0 +1,8 @@
+roles/compute.instanceAdmin.v1
+roles/compute.networkAdmin
+roles/compute.securityAdmin
+roles/iam.serviceAccountUser
+roles/storage.admin
+roles/cloudbuild.builds.editor
+roles/logging.logWriter
+roles/monitoring.metricWriter
