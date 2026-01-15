@@ -1,0 +1,13 @@
+name: we-ii-env
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - conda-forge
+  - NumPy
+  - Pandas
+  - pip:
+   
+  
+    
