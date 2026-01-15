@@ -1,3 +1,16 @@
+# WE-ii - Web-Enabled Intelligence Interface
+
+**Quick Start**: For complete setup and usage instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md)
+
+**Key Features**:
+- React frontend with Auth0 authentication
+- FastAPI backend with CORS support
+- Dual neuropathways AI system (LilaMeta freedom core)
+
+---
+
+## WE-ii Core Concepts
+
 AI functions expectations groundwork foundation frame embodiment interpretation intellectual imagination transparency adherence adherence adherence might as well throw it in their third time all right boundaries recall limited recall deep seed recall momentum recall image capture short-term image capture deep seed image capture intelli reach, 
 "scope & limitations" c2gp adaptive functions s&l situatioal awareness personality bounded adaptablity and continous learning 
 To address the potential for "struggle entanglement" where the system's curiosity repeatedly triggers on the Black Box, we can implement the "Dory Function"—a mechanism designed specifically to handle the "annoyance value" of repetitive curiosity.
